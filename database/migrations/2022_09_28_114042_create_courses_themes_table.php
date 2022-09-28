@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Course;
+use App\Models\Theme;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,10 +15,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->char('name');
-            $table->timestamps();
+        Schema::create('courses_themes', function (Blueprint $table) {
+            $table->foreignIdFor(Course::class);
+            $table->foreignIdFor(Theme::class);
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('courses_themes');
     }
 };
