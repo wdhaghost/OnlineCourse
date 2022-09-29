@@ -1,32 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="build/assets/app.3a90fd2c.css">
-    <title>{{$title}}</title>
-</head>
-
-<body>
-    <header">
-    <nav class="justify-between">
-        <h1 class="font-sans bg-gray-600">{{ $subtitle }}</h1>
+@extends('page')
+@section('title','Liste des cours')
+@section('content')
 
 
-    </nav>
+<div class="filter-section">
 
-    </header>
-    <main>
-        <ul>
-            @foreach ($courses as $course)
+</div>
+<ul class="course-list">
+    @foreach ($courses as $course)
 
-                <li>{{ $course->name }}</li>
-            
-            @endforeach
+    <li class="course">
+        <div>
+            <p class="course-name">{{ $course->name }}</p>
+            <p class="course-description">{{ $course->description }}</p>
+            <p class="course-date">{{ $course->created_at }}</p>
+        </div>
+        <ul class="theme-list">
+            <li class="theme {{ $course->name }}">javascript</li>
         </ul>
-    </main>
-</body>
+    </li>
 
-</html>
+    @endforeach
+</ul>
+
+@endsection

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Theme;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CourseController extends Controller
 {
@@ -15,8 +18,6 @@ class CourseController extends Controller
     public function index()
     {
         $content=[
-                    'title'=>'Course en ligne',
-                    'subtitle'=>'Liste des cours',
                     'courses'=>Course::all()
         ];
         return view('dashboard',$content);
@@ -29,7 +30,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('form');
     }
 
     /**
@@ -40,7 +42,20 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name'=>'required|max:25',
+            'description'=>'max:50',
+            'thème'=>'max'
+        ]);
+
+        $course= new Course;
+        $course->name =$request->input('name');
+        $course->description =$request->input('description');
+        $course->upload_date =$request->input('date');
+        $path=$request->file('coursefile')->store('courses');
+        $course->link=$path;
+        $course->save();
+        return Redirect::route('dashboard');
     }
 
     /**

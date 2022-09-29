@@ -17,4 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[CourseController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/add',[CourseController::class,'create'])->middleware(['auth', 'verified'])->name('addcourseform');
+
+Route::post('/add',[CourseController::class,'store'])->middleware(['auth', 'verified'])->name('storecourse');
+
 require __DIR__.'/auth.php';

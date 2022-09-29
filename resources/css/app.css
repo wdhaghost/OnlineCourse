@@ -1,4 +1,149 @@
+@import url(font-awesome.min.css);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+* {
+    
+    font-size: 16px;
+    font-family: Helvetica, Arial sans-serif;
+    box-sizing: border-box;
+}
 
+body {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+li{
+    margin: 0;
+    padding: 0;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+.container{
+    padding: 6rem 1rem 0 1rem;
+    background-color: #dadada;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 0.25rem;
+    background-color: #339DFF;
+    box-shadow:0px 2px 2px 1px rgba(0, 0, 0, 0.2) ;
+    position: fixed;
+    top:0;
+}
+
+.title{
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+.logout-section{
+    display: none;
+    background-color: rgb(213, 0, 0);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    color: white;
+}
+.logout-lnk{
+    display: block;
+}
+.course-list{
+    display: flex;
+    flex-direction:column;
+    gap: 0.5rem;
+}
+
+.course {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #999999;
+    padding: 1rem;
+    background-color: whitesmoke;
+    box-shadow:2px 2px rgba(0, 0, 0, 0.241);
+    position: relative;
+}
+
+.course-name{
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.course-description{
+    font-weight: 700;
+    color: #1e1e1e;
+}
+.course-date{
+    position: absolute;
+    bottom:0.25rem;
+    right:1rem;
+}
+.theme-list{
+    display: flex;
+}
+.theme{
+    padding:0.5rem ;
+    border-radius: 5rem;
+}
+
+.theme.javacript{
+    background-color: yellow;
+}
+@media screen and (min-width:764px){
+    .course-list{
+        display:flex;
+        flex-wrap: wrap;
+        flex-direction:row ;
+        padding: 1rem;
+    }
+    .course{
+        width:300px ;
+        height: 180px;
+    }
+}
+
+/* form */
+.form{
+    padding:1rem;
+    background-color:#339DFF ;
+    border-radius: 1rem;
+}
+
+.form-itm{
+    display: flex;
+    flex-direction: column;
+    color: whitesmoke;
+    border-radius: 2rem;
+}
+
+.submit-btn{
+    display: flex;
+    align-self: center;
+    padding: 0.5rem;
+    background-color: whitesmoke;
+}
