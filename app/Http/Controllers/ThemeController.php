@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
 use App\Models\Theme;
-use DateTime;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 
-class CourseController extends Controller
+class ThemeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +14,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $content=[
-                    'courses'=>Course::all(),
-                    'themes'=>Course::themes()
-                     ];
-        return view('dashboard',$content);
+        //
     }
 
     /**
@@ -31,10 +24,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $content=[
-            'themes'=>Theme::all()
-        ];
-        return view('form',$content);
+        //
     }
 
     /**
@@ -45,20 +35,13 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name'=>'required|max:25',
-            'description'=>'max:50',
+        $theme = new Theme;
+        $theme->name = $request->input('name');
+        $ok = $theme->save();
+        return response()->json([
+            'ok' => $ok,
+            'id' => $theme->id
         ]);
-
-        $course= new Course;
-        $course->name =$request->input('name');
-        $course->description =$request->input('description');
-        $course->upload_date =$request->input('date');
-        $course->themes()->attach($request->themes);
-        $path=$request->file('coursefile')->store('courses');
-        $course->link=$path;
-        $course->save();
-        return Redirect::route('dashboard');
     }
 
     /**

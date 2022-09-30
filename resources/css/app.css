@@ -1,7 +1,7 @@
 @import url(font-awesome.min.css);
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 * {
     
     font-size: 16px;
@@ -132,6 +132,8 @@ a {
     padding:1rem;
     background-color:#339DFF ;
     border-radius: 1rem;
+    display: flex;
+    justify-content: center;
 }
 
 .form-itm{
@@ -139,9 +141,16 @@ a {
     flex-direction: column;
     color: whitesmoke;
     border-radius: 2rem;
+    width:100%;
 }
-
-.submit-btn{
+.form-itm.new-theme{
+    flex-direction: row;
+    width:100%;
+}
+.input{
+    color: black;
+}
+.btn{
     display: flex;
     align-self: center;
     padding: 0.5rem;

@@ -16,7 +16,11 @@
             <p class="course-date">{{ $course->created_at }}</p>
         </div>
         <ul class="theme-list">
-            <li class="theme {{ $course->name }}">javascript</li>
+            @if(!empty($theme))
+            @foreach ($themes as $theme)
+            <li class="theme {{ $theme->name }}">{{ $theme->name }}</li>
+            @endforeach
+            @endif
         </ul>
     </li>
 
