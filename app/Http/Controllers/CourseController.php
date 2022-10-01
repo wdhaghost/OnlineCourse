@@ -19,7 +19,6 @@ class CourseController extends Controller
     {
         $content=[
                     'courses'=>Course::all(),
-                    'themes'=>Course::themes()
                      ];
         return view('dashboard',$content);
     }
