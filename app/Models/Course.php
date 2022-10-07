@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-use app\Models\Theme;
+
 use app\Models\Category;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +12,7 @@ class Course extends Model
         return $this->belongsTo(Category::class);
     }
     public function themes(){
-        return $this->belongsToMany(Theme::class);
+        return $this->belongsToMany(Theme::class,"courses_themes");
     }
     use HasFactory;
 }

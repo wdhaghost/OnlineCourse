@@ -50,8 +50,9 @@ button{
 
 .container{
     margin-top:65px;
+    padding:1rem 0.5rem;
     background-color: #dadada;
-    min-height:100vh;
+    min-height:calc(100vh - 65px);
 }
 .header{
     display: flex;
@@ -63,6 +64,7 @@ button{
     box-shadow:0px 2px 2px 1px rgba(0, 0, 0, 0.2) ;
     position: fixed;
     top:0;
+    z-index: 100;
 }
 
 .title{
@@ -93,20 +95,22 @@ button{
 width:100%;
 }
 .filter-section{
+    display :none;
     position: absolute;
     z-index: 50;
     width: 100vw;
     height: 100%;
     padding: 3rem;
-    background-color: #339DFF;
+    background-color: #999999;
 }
 
-.btn{
+.filter-btn{
 
     width:100%;
     height: 100%;
     text-align: center;
 }
+
 .course-list{
     display: flex;
     flex-direction:column;
@@ -139,39 +143,94 @@ width:100%;
     bottom:0.25rem;
     right:1rem;
 }
+
 .theme-list{
+    position: absolute;
+    bottom: 1rem;
     display: flex;
+    gap:0.25rem
 }
 .theme{
     padding:0.5rem ;
     border-radius: 5rem;
+    color: white;
 }
 
 .theme.javacript{
     background-color: yellow;
 }
+.theme.php{
+    background-color: rgb(165, 0, 177);
+}
+.theme.SQL{
+    background-color: rgb(8, 95, 166);
+}
+
+.edit-link{
+    position: absolute;
+    right:1rem;
+    
+}
+.add-button{
+    display: block;
+    position: fixed;
+    bottom: 1rem;
+    right:1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    color: white;
+    font-weight:700 ;
+    background-color: #339DFF;
+}
+.add-button:hover{
+    color: #339DFF;
+    background-color: white;
+}
+
 @media screen and (min-width:764px){
+    .container{
+        display: grid;
+        grid-template-columns:25% 75%;
+        padding:2rem 3rem;
+    }
     .course-list{
-        display:flex;
+        grid-column: 2/3;    
+        flex-direction: row;
         flex-wrap: wrap;
-        flex-direction:row ;
-        padding: 1rem;
+        align-content: flex-start;
+        gap:1rem;
+        padding:0 1rem;
+        
     }
     .course{
         width:300px ;
         
     }
+    .filter-btn-section{
+        display: none;
+    }
+    .filter-section{
+        grid-column: 1/2;
+        display: block;
+        position: sticky;
+        width:100%;
+    }
 }
 
 /* form */
-.form{
+.form-area{
+    height: 100%;
     padding:1rem;
     background-color:#339DFF ;
     border-radius: 1rem;
-    display: flex;
-    justify-content: center;
 }
 
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
 .form-itm{
     display: flex;
     flex-direction: column;
@@ -186,3 +245,4 @@ width:100%;
 .input{
     color: black;
 }
+

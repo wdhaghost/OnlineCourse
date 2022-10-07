@@ -1,23 +1,23 @@
 @extends('page')
 @section('title','Ajouter un cours')
 @section('content')
-<div class="form">
-    <form action="{{@route('storecourse')}}" method="post" enctype="multipart/form-data">
+<div class="form-area">
+    <form class="form" action="{{@route('storecourse')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-itm">
             <label for="name">Nom du cours:</label>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" value="{{ old('name')}}">
 
         </div>
         <div class="form-itm">
-
+            
             <label for="decription">Description du cours</label>
-            <input type="text" name="description" id="description">
+            <input type="text" name="description" id="description" value="{{old('description')}}">
         </div>
         <div class="form-itm">
 
             <label for="date">date du cours</label>
-            <input class="input" type="date" name="date" id="date">
+            <input class="input" type="date" name="date" id="date" value="{{old('upload_date')}}">
         </div>
 
         <div class="form-itm">
@@ -29,8 +29,12 @@
             <ul>
                 @if(!empty($themes))
                     @foreach ($themes as $theme)
-
-                        <li><label for="theme[]"><input type="checkbox" name="themes[]" value="{{ $theme->id }}">{{ $theme->name }}</label></li>
+                        
+                        <li>
+                            <label for="theme []">
+                                <input type="checkbox" <?php echo $course->themes->contains($theme->id)? "checked":"" ?> name="themes[]" value="{{ $theme->id }}">{{ $theme->name }}
+                            </label>
+                            </li>
                     @endforeach
                 @endif
                 <li class="form-itm new-theme">
@@ -40,8 +44,9 @@
             </ul>
         </div>
 
-        <input class='btn' type="submit" value="Ajouter le cours">
+        <input  type="submit" value="Ajouter le cours">
 
     </form>
 </div>
+
 @endsection

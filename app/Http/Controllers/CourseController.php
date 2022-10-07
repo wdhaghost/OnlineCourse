@@ -19,6 +19,7 @@ class CourseController extends Controller
     {
         $content=[
                     'courses'=>Course::all(),
+                    'themes'=>Theme::all()
                      ];
         return view('dashboard',$content);
     }
@@ -33,7 +34,7 @@ class CourseController extends Controller
         $content=[
             'themes'=>Theme::all()
         ];
-        return view('form',$content);
+        return view('create',$content);
     }
 
     /**
@@ -53,10 +54,10 @@ class CourseController extends Controller
         $course->name =$request->input('name');
         $course->description =$request->input('description');
         $course->upload_date =$request->input('date');
-        $course->themes()->attach($request->themes);
         $path=$request->file('coursefile')->store('courses');
         $course->link=$path;
         $course->save();
+        $course->themes()->attach($request->themes);
         return Redirect::route('dashboard');
     }
 
@@ -68,9 +69,9 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -79,6 +80,12 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
+        $course=Course::find($id);
+       $content=[
+        'course' => $course,
+        'themes'=>Theme::all()
+       ];
+        return view('edit',$content);
         //
     }
 
